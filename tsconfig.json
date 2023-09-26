@@ -5,7 +5,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "target": "es2022",
-    "verbatimModuleSyntax": false,
+    "verbatimModuleSyntax": true,
     "allowJs": true,
     "resolveJsonModule": true,
     "moduleDetection": "force",
