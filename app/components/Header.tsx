@@ -1,8 +1,10 @@
 import SocialIcon from "./SocialIcon"
+import ToggleButton from "./ToggleButton"
+
 
 export default function Header() {
   return (
-    <header className="bg-dark px-4 py-2 flex items-center fixed bottom-0 min-w-full justify-between">
+    <header className="bg-dark px-4 py-5 flex items-center fixed bottom-0 min-w-full justify-between">
       <div >
         <h1 className="font-heading leading-none font-normal text-[1em] sm:text-[1.5em]">
           <span className="flex flex-col sm:flex-row sm:gap-2">
@@ -15,7 +17,7 @@ export default function Header() {
           </span>
         </h1>
       </div>
-      <div className="flex items-center gap-10 text-light font-text text-sm flex-grow justify-end px-7">
+      <div className="flex items-center gap-5 text-light font-text text-sm justify-end">
         <nav className="">
           <ul className="list-none items-center flex gap-6">
             <li>allProjects<span className="text-aqua">: [Project]</span></li>
@@ -30,7 +32,7 @@ export default function Header() {
           <li><SocialIcon href="#" target="_blank" icon="youtube" color="aqua" /></li>
         </ul>
         <div className="theme switch">
-            theme
+            <ToggleButton nightMode={false} />
         </div>
       </div>
      

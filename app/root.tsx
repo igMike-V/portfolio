@@ -20,7 +20,6 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function App() {
-  console.log("App")
   return (
     <html lang="en">
       <head>

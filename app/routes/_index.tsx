@@ -18,7 +18,6 @@ export const loader = async ({ context: { payload } }: LoaderFunctionArgs) => {
 };
 
 export default function Index() {
-  console.log("Index")
   const { posts, projects } = useLoaderData<typeof loader>();
   return (
     <main className="flex flex-col sm:gap-20 md:flex-row">
