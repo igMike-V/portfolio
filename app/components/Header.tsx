@@ -3,8 +3,9 @@ import ToggleButton from "./ToggleButton"
 
 
 export default function Header() {
+ 
   return (
-    <header className="bg-dark px-4 py-5 flex items-center fixed bottom-0 min-w-full justify-between">
+    <header className="bg-dark dark:bg-aqua px-4 py-5 flex items-center fixed bottom-0 min-w-full justify-between">
       <div >
         <h1 className="font-heading leading-none font-normal text-[1em] sm:text-[1.5em]">
           <span className="flex flex-col sm:flex-row sm:gap-2">
@@ -32,7 +33,7 @@ export default function Header() {
           <li><SocialIcon href="#" target="_blank" icon="youtube" color="aqua" /></li>
         </ul>
         <div className="theme switch">
-            <ToggleButton nightMode={false} />
+            <ToggleButton />
         </div>
       </div>
      

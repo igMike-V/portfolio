@@ -1,7 +1,5 @@
 
-import React, { useState } from "react"
-
-
+import { Theme, useTheme } from "../utils/theme-provider"
 const iconClass = 'h-5 w-5 text-light'
 
 
@@ -20,36 +18,31 @@ const NightIcon = () => (
   </svg>
 )
 
-type ToggleButtonProps = {
-  nightMode: boolean;
+
+
+const ToggleButton = () => {
+  const [ theme, setTheme] = useTheme();
+  const themeToggle = () => {
+  setTheme((prevTheme) => (prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
 }
-
-
-
-const ToggleButton = ({nightMode}: ToggleButtonProps) => {
-  const [nightToggle, setNightToggle] = useState(nightMode)
- 
-  function toggle(){
-   setNightToggle(!nightToggle)
-  }
-    return (
-      <div className="flex justify-end items-center">
-        <span className="flex justify-center items-center">
-          <DayIcon />
-        </span>
-        <div onClick={toggle} className="cursor-pointer w-14 h-6 flex items-center bg-translight rounded-full mx-3 px-1 bg-dark">
-          {
-            nightToggle
-            ? <div className="bg-dark w-5 h-5 rounded-full shadow-md transform translate-x7"></div>
-            : <div className="bg-dark w-5 h-5 rounded-full shadow-md transform translate-x-7"></div>
-          }
-          
-        </div>
-        <span className="">
-          <NightIcon />
-        </span>
-      </div>  
-    )
+  return (
+    <div className="flex justify-end items-center pt-[1px]">
+      <span className="flex justify-center items-center">
+        <DayIcon />
+      </span>
+      <div onClick={themeToggle} className="cursor-pointer w-14 h-6 flex items-center bg-translight rounded-full mx-3 px-1 bg-dark">
+        {
+          theme === 'dark'
+          ? <div className="bg-dark w-5 h-5 rounded-full shadow-md transform translate-x7 transition-all duration-300"></div>
+          : <div className="bg-dark w-5 h-5 rounded-full shadow-md transform translate-x-7 transition-all duration-30"></div>
+        }
+        
+      </div>
+      <span className="">
+        <NightIcon />
+      </span>
+    </div>  
+  )
 }
 
 export default ToggleButton

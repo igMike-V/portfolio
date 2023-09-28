@@ -11,6 +11,7 @@ import {
 import styles from "./tailwind.css";
 import Header from "./components/Header";
 
+
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export const meta: MetaFunction = () => [
@@ -19,9 +20,14 @@ export const meta: MetaFunction = () => [
   { name: "viewport", content: "width=device-width, initial-scale=1" },
 ];
 
-export default function App() {
+import { ThemeProvider, useTheme } from "./utils/theme-provider";
+
+
+function AppEntry(){ 
+  const [theme] = useTheme()
+  
   return (
-    <html lang="en">
+      <html lang="en" className={theme? theme : 'light'}>
       <head>
         <Meta />
         <Links />
@@ -37,4 +43,12 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppEntry />
+    </ThemeProvider>
+  )
 }
