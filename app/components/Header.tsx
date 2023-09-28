@@ -27,10 +27,10 @@ export default function Header() {
           </ul>
         </nav>
         <ul className="flex justify-center items-center gap-6 md:gap-4 list-none">
-          <li><SocialIcon href="#" target="_blank" icon="github" color="aqua" /></li>
-          <li><SocialIcon href="#" target="_blank" icon="linkedin" color="aqua" /></li>
-          <li><SocialIcon href="#" target="_blank" icon="twitter" color="aqua" /></li>
-          <li><SocialIcon href="#" target="_blank" icon="youtube" color="aqua" /></li>
+          <li><SocialIcon href="#" target="_blank" icon="github" /></li>
+          <li><SocialIcon href="#" target="_blank" icon="linkedin" /></li>
+          <li><SocialIcon href="#" target="_blank" icon="twitter"/></li>
+          <li><SocialIcon href="#" target="_blank" icon="youtube" /></li>
         </ul>
         <div className="theme switch">
             <ToggleButton />

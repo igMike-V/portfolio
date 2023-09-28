@@ -6,6 +6,7 @@ module.exports = {
     colors: {
       'aqua': '#0EB6BF',
       'dark': '#2D2E2D',
+      'medium': '#8A8A8A',
       'light': '#E6E6E6',
       'translight': '#FFFFFF70',
       'transdark': '#00000070',

@@ -32,37 +32,30 @@ const icons = {
 type Icon = keyof typeof icons
 
 type IconProps = {
-  color: Color;
   icon: Icon;
   width?: string | undefined;
+  className?: string | undefined;
   height?: string | undefined;
   href?: string;
   target?: string;
-  hover?: boolean;
 }
 
+const tailwindClasses = 'fill-medium dark:fill-dark hover:fill-light dark:hover:aqua '
+
 const Svg = (iconProps: IconProps) => {
-  const {color, icon, width, height, hover} = iconProps;
+  const {icon, width, height} = iconProps;
 
-  // Set icon color and transparency for hover 
-  const initialColor = `#${colors[color]}`
-  const hoverColor = hover === false ? `#${colors[color]}` : `#${colors[color]}80`
-
-  const [iconColor, setIconColor] = useState(initialColor);
   const iconPath = icons[icon].path;
   return (
     <svg
-      onMouseOver={() => setIconColor(hoverColor)}
-      onMouseOut={() => setIconColor(initialColor)}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
       fill="none"
+      className={tailwindClasses}
       viewBox={`0 0 ${width} ${height}`}
     >
       <path
-        fill={iconColor}
-        fillRule="evenodd"
         d={iconPath}
         clipRule="evenodd"
       ></path>
@@ -85,10 +78,9 @@ const SocialIcon = (iconProps: IconProps) => {
     // Return with anchor
     return (
       <a className="flex items-center" href={iconProps.href} target={iconProps.target || "_blank"}>
-        <Svg 
-          hover={true}
+        <Svg
           icon={iconProps.icon}
-          color={iconProps.color} 
+          className={tailwindClasses} 
           width={width} 
           height={height} 
         />
@@ -99,9 +91,8 @@ const SocialIcon = (iconProps: IconProps) => {
   //Return just svg
   return (
     <Svg 
-      hover={false}
       icon={iconProps.icon}
-      color={iconProps.color} 
+      className={tailwindClasses} 
       width={width} 
       height={height} 
     />
