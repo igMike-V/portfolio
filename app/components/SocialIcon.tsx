@@ -40,6 +40,7 @@ type IconProps = {
   target?: string;
 }
 
+// TODO: this dark:hover:aqua is not working
 const tailwindClasses = 'fill-medium dark:fill-dark hover:fill-light dark:hover:aqua '
 
 const Svg = (iconProps: IconProps) => {
