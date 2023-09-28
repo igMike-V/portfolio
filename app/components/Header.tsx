@@ -5,8 +5,8 @@ import ToggleButton from "./ToggleButton"
 export default function Header() {
  
   return (
-    <header className="bg-dark dark:bg-aqua px-4 py-5 flex items-center fixed bottom-0 min-w-full justify-between">
-      <div >
+    <header className="bg-dark dark:bg-aqua md:px-4 md:py-5 flex flex-col md:flex-row md:items-center fixed md:bottom-0 min-w-full justify-between">
+      <div className="p-2 md:px-0 md:py-0" >
         <h1 className="font-heading leading-none font-normal text-[1em] sm:text-[1.5em]">
           <span className="flex flex-col sm:flex-row sm:gap-2">
             <span className="text-light">Mike Vautour</span>
@@ -18,15 +18,15 @@ export default function Header() {
           </span>
         </h1>
       </div>
-      <div className="flex items-center gap-5 text-light font-text text-sm justify-end">
-        <nav className="">
-          <ul className="list-none items-center flex gap-6">
+      <div className="flex flex-col md:flex-row md:items-center gap-5 text-light font-text text-sm justify-end md:border-none border-solid border-t-4 border-aqua">
+        <nav>
+          <ul className="list-none md:items-center flex gap-6 flex-col md:flex-row">
             <li>allProjects<span className="text-aqua">: [Project]</span></li>
             <li>devLogs<span className="text-aqua">: [BlogPost]</span></li>
             <li>myStatus<span className="text-aqua">: Resume</span></li>
           </ul>
         </nav>
-        <ul className="flex items-center gap-4 list-none">
+        <ul className="flex justify-center items-center gap-6 md:gap-4 list-none">
           <li><SocialIcon href="#" target="_blank" icon="github" color="aqua" /></li>
           <li><SocialIcon href="#" target="_blank" icon="linkedin" color="aqua" /></li>
           <li><SocialIcon href="#" target="_blank" icon="twitter" color="aqua" /></li>

@@ -34,7 +34,7 @@ function AppEntry(){
       </head>
       <body className="p-0 m-0 min-h-screen flex flex-col">
         <Header />
-        <main className="flex justify-center mx-auto px-3 py-3 flex-grow">
+        <main className="flex justify-center mx-auto px-3 py-28 md:py-6 flex-grow">
           <Outlet />
         </main>
         <ScrollRestoration />
