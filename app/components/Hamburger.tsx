@@ -1,7 +1,9 @@
 export default function Hamburger({isOpen}: {isOpen: boolean}) {
   return (
     <div className="flex first-letter:items-center">
-      {isOpen ? <img className="pt-1 h-8 flex justify-end items-center" src="/icons/rocket_hamburger_open.svg" alt="Close Menu" /> : <img className="h-8  flex justify-end items-center" src="/icons/rocket_hamburger_closed.svg" alt="Open Menu" />}
+      {isOpen
+      ? <img className="flex h-8 justify-end items-center" src="/icons/hamburger_open.png" alt="Close Menu" /> 
+      : <img className="flex h-8 justify-end items-center" src="/icons/hamburger_closed.png" alt="Open Menu" />}
     </div>
   )
 }

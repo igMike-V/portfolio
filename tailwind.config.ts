@@ -10,6 +10,7 @@ module.exports = {
       'light': '#E6E6E6',
       'translight': '#FFFFFF70',
       'transdark': '#00000070',
+      'darkoverlay': '#000000e6',
     },
     fontFamily: {
       'heading': ['cheddar-gothic-serif', 'sans-serif'],
