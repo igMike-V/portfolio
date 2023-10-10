@@ -19,6 +19,8 @@ export interface Config {
 export interface Post {
   id: string;
   title: string;
+  slug: string;
+  date: string;
   content: {
     [k: string]: unknown;
   }[];
@@ -86,6 +88,7 @@ export interface Project {
   id: string;
   title: string;
   slug: string;
+  agencyProject?: boolean;
   projectLinks?: {
     url: string;
     linkText: string;

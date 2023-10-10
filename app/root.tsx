@@ -32,9 +32,9 @@ function AppEntry(){
         <Meta />
         <Links />
       </head>
-      <body className="p-0 m-0 min-h-screen flex flex-col">
+      <body className="p-0 m-0 min-h-screen flex flex-col bg-light dark:bg-dark text-dark dark:text-light">
         <Header />
-        <main className="flex justify-center mx-auto px-3 py-28 md:py-6 flex-grow">
+        <main className="px-3 w-full py-16 md:py-16 lg:py-6">
           <Outlet />
         </main>
         <ScrollRestoration />

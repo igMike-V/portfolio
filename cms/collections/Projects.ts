@@ -26,6 +26,12 @@ const Projects: CollectionConfig = {
       }
     },
     {
+      name: 'agencyProject',
+      label: 'Agency Project (hide from standard views)',
+      type: 'checkbox',
+      defaultValue: false,
+    },
+    {
       name: 'projectLinks',
       label: 'Live Demo Links',
       type: 'array',

@@ -1,4 +1,5 @@
 import { type CollectionConfig } from 'payload/types';
+import { isValidSlug } from '../utils/validators';
 
 const Posts: CollectionConfig = {
   slug: 'posts',
@@ -13,6 +14,22 @@ const Posts: CollectionConfig = {
       name: 'title',
       label: 'Title',
       type: 'text',
+      required: true
+    },
+    {
+      name: 'slug',
+      label: 'Url Slug',
+      type: 'text',
+      required: true,
+      validate: (val) => {
+        console.log(val)
+        return isValidSlug(val);
+      }
+    },
+    {
+      name: 'date',
+      label: 'Title',
+      type: 'date',
       required: true
     },
     {
@@ -32,7 +49,8 @@ const Posts: CollectionConfig = {
       name: 'project',
       label: 'Project connection',
       type: 'relationship',
-      relationTo: 'projects'
+      relationTo: 'projects',
+      hasMany: false
     },
     {
       name: 'technologies',
