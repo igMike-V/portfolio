@@ -41,6 +41,7 @@
     "@payloadcms/bundler-webpack": "^1.0.4",
     "@payloadcms/db-postgres": "^0.1.10",
     "@payloadcms/richtext-lexical": "^0.1.14",
+    "@payloadcms/richtext-slate": "^1.0.7",
     "@remix-run/express": "^2.0.0",
     "@remix-run/node": "^2.0.0",
     "@remix-run/react": "^2.0.0",

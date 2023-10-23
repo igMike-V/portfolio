@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload/config';
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path';
 import Users from "./cms/collections/Users";
 import Posts from "./cms/collections/Posts";
@@ -28,7 +28,7 @@ export default buildConfig({
     },
   },
   serverURL: 'http://localhost:3000',
-  editor: lexicalEditor({}),
+  editor: slateEditor({}),
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
