@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  portfolio:
+    image: postgres:15-alpine
+    command: ["postgres", "-c", "log_statement=all"]
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: iglabportfolio
+    volumes: 
+      - ./postgres-data:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"

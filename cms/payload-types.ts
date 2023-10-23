@@ -13,25 +13,27 @@ export interface Config {
     technologies: Technology;
     users: User;
     media: Media;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {};
 }
 export interface Post {
-  id: string;
+  id: number;
   title: string;
   slug: string;
   date: string;
   content: {
     [k: string]: unknown;
   }[];
-  coverImage: string | Media;
-  project?: string | Project;
-  technologies?: string[] | Technology[];
+  coverImage: number | Media;
+  project?: number | Project;
+  technologies?: number[] | Technology[];
   updatedAt: string;
   createdAt: string;
 }
 export interface Media {
-  id: string;
+  id: number;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -85,7 +87,7 @@ export interface Media {
   };
 }
 export interface Project {
-  id: string;
+  id: number;
   title: string;
   slug: string;
   agencyProject?: boolean;
@@ -97,31 +99,31 @@ export interface Project {
   description: {
     [k: string]: unknown;
   }[];
-  coverImage?: string | Media;
+  coverImage?: number | Media;
   heading: string;
   features?: {
     feature?: string;
-    image: string | Media;
+    image: number | Media;
     details?: string;
     id?: string;
   }[];
   content?: {
     [k: string]: unknown;
   }[];
-  technologies?: string[] | Technology[];
+  technologies?: number[] | Technology[];
   updatedAt: string;
   createdAt: string;
 }
 export interface Technology {
-  id: string;
+  id: number;
   name: string;
-  logo?: string | Media;
+  logo?: number | Media;
   updatedAt: string;
   createdAt: string;
 }
 export interface User {
-  id: string;
-  avatar?: string | Media;
+  id: number;
+  avatar?: number | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -131,5 +133,36 @@ export interface User {
   hash?: string;
   loginAttempts?: number;
   lockUntil?: string;
-  password?: string;
+  password: string;
+}
+export interface PayloadPreference {
+  id: number;
+  user: {
+    relationTo: 'users';
+    value: number | User;
+  };
+  key?: string;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface PayloadMigration {
+  id: number;
+  name?: string;
+  batch?: number;
+  updatedAt: string;
+  createdAt: string;
+}
+
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
 }
