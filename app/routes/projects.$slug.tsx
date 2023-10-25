@@ -4,19 +4,24 @@ import type {
 import { useLoaderData } from "@remix-run/react"
 import { json } from "@remix-run/server-runtime"
 
-import type {  Project } from "payload/generated-types"
+
 
 import TechLogos from "~/components/TechLogos"
 import ProjectFeatureCard from "~/components/ProjectFeatureCard"
-import ContentComponent,  { type ContentNode } from "~/components/shared/ContentComponent"
+import ContentComponent from "~/components/shared/ContentComponent"
+import type {
+  LexicalRootNode,
+  ExtendedProject
+} from "~/types"
 
 import ClientOnly from "~/components/shared/ClientOnly"
 import ProjectLinkButtons from "~/components/shared/ProjectLinkButtons"
 import DevLogCards from "~/components/shared/DevLogCards"
 
 
+
 export const loader = async ({ params, context: { payload } }:LoaderFunctionArgs) => {
-  const project = await payload.find({
+  const projectLoader = await payload.find({
     collection: 'projects',
     where: {
       slug: {
@@ -26,18 +31,20 @@ export const loader = async ({ params, context: { payload } }:LoaderFunctionArgs
     limit: 1
   })
   let devLogs
-  if(project.docs[0]){
+  let project = {} as ExtendedProject
+  if(projectLoader.docs[0]){
+    project = projectLoader.docs[0] as ExtendedProject
     devLogs = await payload.find({
       collection: 'posts',
       where: {
         project: {
-          equals: project.docs[0].id,
+          equals: project.id,
         }
       }
     })
   }
 
-  return json({project: project.docs[0], devlogs: devLogs?.docs ||  []})
+  return json({project: project, devlogs: devLogs?.docs ||  []})
 }
 
 export default function Project() {
@@ -48,7 +55,8 @@ export default function Project() {
     coverImageUrl = project?.coverImage.url
   }
 
-  const description: ContentNode[] = project?.description as ContentNode[] || []
+  const description = project?.description?.root
+  const content = project?.content?.root
 
   return (
     <main className="flex flex-col sm:gap-2 pb-11">
@@ -56,22 +64,23 @@ export default function Project() {
         <h1 className="font-heading font-normal text-[3em] sm:text-[3em] text-aqua mt-0 p-0">
           {project?.title}
         </h1>
-        <div className="flex items-center flex-row gap-2 pb-3 sm:pb-0">
-          { project && <ProjectLinkButtons project={project} /> }
+        <div className="flex flex-col sm:items-center sm:flex-row gap-3 pb-3 sm:pb-0">
+          { project && <ProjectLinkButtons project={project} readMore={false} /> }
           <TechLogos technologies={project?.technologies} />
         </div>
       </div>
+      <div className="py-5"><ClientOnly>{() => <ContentComponent content={description as LexicalRootNode} />}</ClientOnly></div>
       <div
-        className="m-0 box-border h-80 rounded-md"
+        className="m-0 box-border h-80 rounded-mdv"
         style={{
           backgroundImage: `url("${coverImageUrl}")`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          backgroundPosition: 'bottom'
+          backgroundPosition: 'top'
         }}>
 
       </div>
-      <div><ClientOnly>{() => <ContentComponent content={description} />}</ClientOnly></div>
+      <div className="py-5"><ClientOnly>{() => <ContentComponent content={content as LexicalRootNode} />}</ClientOnly></div>
       <div className="content"></div>
       { project?.features && 
         <section className="py-6">

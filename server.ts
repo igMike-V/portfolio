@@ -35,12 +35,11 @@ async function start() {
   const app = express();
 
   invariant(process.env.PAYLOAD_SECRET, "PAYLOAD_SECRET is required");
-  invariant(process.env.MONGODB_URI, "MONGODB_URI is required");
+  invariant(process.env.DATABASE_URI, "DATABASE_URI is required");
 
   /* Initialze Payload CMS */
   await payload.init({
     secret: process.env.PAYLOAD_SECRET,
-    mongoURL: process.env.MONGODB_URI,
     express: app,
     onInit: () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);

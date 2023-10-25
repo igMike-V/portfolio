@@ -28,7 +28,7 @@ const Posts: CollectionConfig = {
     },
     {
       name: 'date',
-      label: 'Title',
+      label: 'Post Date',
       type: 'date',
       required: true
     },
