@@ -1,11 +1,11 @@
-import { type Media } from 'payload/generated-types'
+import { type Media } from '../../cms/payload-types'
 
 
 type ProjectFeature = {
-  feature?: string;
-  image: string | Media;
-  details?: string;
-  id?: string;
+  feature?: string | undefined;
+  image: number | Media;
+  details?: string | undefined;
+  id?: string | undefined;
 };
 
 export type ProjectFeatureCardProps = {
@@ -13,6 +13,7 @@ export type ProjectFeatureCardProps = {
 }
 
 export default function ProjectFeatureCard({ feature }: ProjectFeatureCardProps){
+  console.log('feature', feature)
   let coverImageUrl = "https://dummyimage.com/600"
   if(typeof feature.image === 'object' && feature.image.url){
     coverImageUrl = feature.image.url

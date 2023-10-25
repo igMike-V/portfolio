@@ -98,7 +98,7 @@ export interface Project {
   }[];
   description: {
     [k: string]: unknown;
-  }[];
+  };
   coverImage?: number | Media;
   heading: string;
   features?: {
@@ -109,7 +109,7 @@ export interface Project {
   }[];
   content?: {
     [k: string]: unknown;
-  }[];
+  };
   technologies?: number[] | Technology[];
   updatedAt: string;
   createdAt: string;

@@ -1,10 +1,10 @@
-import type { Project } from "../../../cms/payload-types"
 import { Link } from "@remix-run/react"
 import { GrGithub } from "react-icons/gr"
 import {styles} from '../../shared-styles'
+import type { ExtendedProject } from "~/types"
 
 type ProjectProps = {
-  project: Project
+  project: ExtendedProject
   buttonLabel?: string
   wrapperStyles?: string
 }
