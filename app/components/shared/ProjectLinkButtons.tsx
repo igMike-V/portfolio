@@ -7,18 +7,18 @@ type ProjectProps = {
   project: ExtendedProject
   buttonLabel?: string
   wrapperStyles?: string
+  readMore?: boolean
 }
-export default function ProjectLinkButtons({ project, buttonLabel, wrapperStyles }: ProjectProps): JSX.Element {
+export default function ProjectLinkButtons({ project, buttonLabel, wrapperStyles, readMore = true }: ProjectProps): JSX.Element {
   return (
     <div className={`flex flex-wrap gap-2 ${wrapperStyles || ''}`}>
-        <Link 
+        { readMore && <Link 
           to={`/projects/${project.slug}`}
-          className={`text-light dark:text-dark bg-dark dark:bg-light leading-loose ${styles.button}`}
+          className={`text-light dark:text-dark bg-dark dark:bg-light leading-loose ${styles.button} hover:scale-95`}
         >
           { buttonLabel || 'Read More' }
-        </Link>
-        {
-          typeof project.projectLinks === 'object' &&
+        </Link>}
+        { typeof project.projectLinks === 'object' &&
             project.projectLinks.map(projectLink => {
               const isGithub = projectLink.linkText.toLowerCase() === 'github'
               return (

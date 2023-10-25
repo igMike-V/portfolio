@@ -64,23 +64,23 @@ export default function Project() {
         <h1 className="font-heading font-normal text-[3em] sm:text-[3em] text-aqua mt-0 p-0">
           {project?.title}
         </h1>
-        <div className="flex items-center flex-row gap-2 pb-3 sm:pb-0">
-          { project && <ProjectLinkButtons project={project} /> }
+        <div className="flex flex-col sm:items-center sm:flex-row gap-3 pb-3 sm:pb-0">
+          { project && <ProjectLinkButtons project={project} readMore={false} /> }
           <TechLogos technologies={project?.technologies} />
         </div>
       </div>
-      <div><ClientOnly>{() => <ContentComponent content={content as LexicalRootNode} />}</ClientOnly></div>
+      <div className="py-5"><ClientOnly>{() => <ContentComponent content={description as LexicalRootNode} />}</ClientOnly></div>
       <div
-        className="m-0 box-border h-80 rounded-md"
+        className="m-0 box-border h-80 rounded-mdv"
         style={{
           backgroundImage: `url("${coverImageUrl}")`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          backgroundPosition: 'bottom'
+          backgroundPosition: 'top'
         }}>
 
       </div>
-      <div><ClientOnly>{() => <ContentComponent content={description as LexicalRootNode} />}</ClientOnly></div>
+      <div className="py-5"><ClientOnly>{() => <ContentComponent content={content as LexicalRootNode} />}</ClientOnly></div>
       <div className="content"></div>
       { project?.features && 
         <section className="py-6">
